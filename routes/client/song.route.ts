@@ -6,4 +6,6 @@ import * as controller from "../../controller/client/song.controller"
 
 router.get("/:slugTopic", controller.list)
 
+router.get("/detail/:slugSong", controller.detail)
+
 export const songRoute: Router = router;
