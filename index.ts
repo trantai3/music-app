@@ -1,6 +1,11 @@
 import express, { Express } from 'express'
 
 import dotenv from "dotenv"
+dotenv.config()
+
+import path from "path"
+
+import bodyParser from 'body-parser'
 
 import * as database from "./config/database"
 
@@ -8,14 +13,15 @@ import clientRoutes from './routes/client/index.route'
 
 import adminRoutes from './routes/admin/index.route'
 import { systemConfig } from './config/config'
-import path from "path"
 
-dotenv.config()
 
 database.connect()
 
 const app: Express = express()
 const port: number | string = process.env.PORT || 3000
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static("public"))
 
