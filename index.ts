@@ -1,5 +1,5 @@
 import express, { Express } from 'express'
-
+import methodOverride from 'method-override'
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -24,6 +24,7 @@ const port: number | string = process.env.PORT || 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static("public"))
+app.use(methodOverride('_method'))
 
 app.set("views", "./views")
 app.set("view engine", "pug")

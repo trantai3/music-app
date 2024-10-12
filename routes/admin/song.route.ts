@@ -26,4 +26,17 @@ router.post(
     controller.createPost
 )
 
+router.patch(
+  '/edit/:id', 
+  upload.fields(
+      [
+        { name: 'avatar', maxCount: 1 },
+        { name: 'audio', maxCount: 1 }
+      ]
+    ), 
+  uploadCloud.uploadFields, 
+  controller.editPatch
+)
+
+router.get("/edit/:id", controller.edit)
 export const songRoutes: Router = router
