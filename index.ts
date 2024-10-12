@@ -23,10 +23,11 @@ const port: number | string = process.env.PORT || 3000
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.static("public"))
+app.use(express.static(`${__dirname}/public`))
 app.use(methodOverride('_method'))
 
-app.set("views", "./views")
+app.set('views', `${__dirname}/views`)
+
 app.set("view engine", "pug")
 
 // TinyMCE
